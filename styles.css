@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;700&display=swap');
+
+:root {
+    --desk-bg: #2c2c2c;
+    --paper-bg: #fdfaf3;
+    --ink-color: #333;
+    --accent-red: #b22222;
+    --shadow: rgba(0, 0, 0, 0.2);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--desk-bg) url('https://www.transparenttextures.com/patterns/dark-wood.png');
+    font-family: 'EB Garamond', serif;
+    color: var(--ink-color);
+    line-height: 1.6;
+    padding: 3rem 1rem;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.journal-container {
+    background: var(--paper-bg);
+    width: 95%;
+    max-width: 850px;
+    padding: 2rem;
+    margin: 0 auto;
+    box-shadow: 
+        10px 10px 30px var(--shadow),
+        inset 0 0 100px rgba(0,0,0,0.05);
+    position: relative;
+    border-radius: 2px;
+    background-image: 
+        radial-gradient(circle at 0% 0%, transparent 10px, #e9e4d9 11px, transparent 12px),
+        repeating-linear-gradient(#f1ede4 0px, #f1ede4 1px, transparent 1px, transparent 31px);
+    background-size: 100% 31px;
+}
+
+/* Paper texture overlay */
+.journal-container::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('https://www.transparenttextures.com/patterns/paper.png');
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Binding / Ring holes */
+.journal-container::before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(0,0,0,0.1);
+    box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+}
+
+.masthead {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+.masthead h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: var(--accent-red);
+    margin-bottom: 0.5rem;
+}
+
+.masthead p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: #666;
+}
+
+/* Entry Links as Pinned Notes */
+.toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.entry-link {
+    background: #fff;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+    transform: rotate(-1deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee;
+    position: relative;
+}
+
+.entry-link::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 20px;
+    background: rgba(200, 200, 200, 0.4);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.entry-link:nth-child(even) { transform: rotate(1.5deg); }
+.entry-link:nth-child(3n) { transform: rotate(-2deg); }
+
+.entry-link:hover {
+    transform: scale(1.05) rotate(0deg);
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.15);
+    z-index: 10;
+}
+
+.entry-link .entry-num {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--accent-red);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.entry-link .entry-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+/* Entry Pages */
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2;
+}
+
+.back-btn {
+    color: var(--accent-red);
+    text-decoration: none;
+}
+
+h2 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    color: var(--accent-red);
+    position: relative;
+    z-index: 2;
+}
+
+.article-text {
+    font-size: 1.2rem;
+    text-align: justify;
+    position: relative;
+    z-index: 2;
+}
+
+/* Polaroid Photo Style */
+.photo-collage {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 3rem 0;
+    justify-content: center;
+}
+
+.photo-item {
+    background: white;
+    padding: 1rem 1rem 3.5rem 1rem;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.15);
+    transform: rotate(2deg);
+    transition: transform 0.3s;
+    max-width: 400px;
+}
+
+.photo-item:nth-child(even) { transform: rotate(-3deg); }
+
+.photo-item img {
+    width: 100%;
+    display: block;
+    filter: sepia(0.2);
+}
+
+.photo-caption {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+    text-align: center;
+    margin-top: 1rem;
+    color: #444;
+}
+
+/* Table for Reading Schedule */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin: 2rem 0;
+    -webkit-overflow-scrolling: touch;
+}
+
+.news-table {
+    width: 100%;
+    min-width: 600px; /* Ensures table doesn't get too squashed */
+    border-collapse: collapse;
+    background: rgba(255,255,255,0.5);
+}
+
+.news-table th, .news-table td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    text-align: left;
+    vertical-align: top;
+}
+
+.news-table th {
+    background: #eee;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
